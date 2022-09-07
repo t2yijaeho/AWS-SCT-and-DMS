@@ -9,7 +9,7 @@ Refer to [Create RDS PostgreSQL](https://github.com/t2yijaeho/Amazon-RDS-Postgre
 
 ### 2. Create Windows firewall inbound rule for Oracle TNS port(1521) using PowerShell script
 
-Open the PowerShell console and run script
+1. Open the PowerShell console and run script
 
     ```powershell
     New-NetFirewallRule -DisplayName “Oracle TNS (TCP-in 1521)” -Profile @(‘Domain’, ‘Private’, 'Public') -Direction Inbound -Protocol TCP –LocalPort 1521 -Action Allow
