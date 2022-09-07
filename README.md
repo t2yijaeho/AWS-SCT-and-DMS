@@ -118,7 +118,7 @@
     mspuser:~/environment $ 
     ```
 
-### 4. Install AWS Schema Conversion Tool
+### 5. Install AWS Schema Conversion Tool
 
 Refer to [Installing AWS SCT](https://docs.aws.amazon.com/SchemaConversionTool/latest/userguide/CHAP_Installing.html#CHAP_Installing.Procedure)
 
@@ -152,7 +152,7 @@ Refer to [Installing AWS SCT](https://docs.aws.amazon.com/SchemaConversionTool/l
 
     ```console
     mspuser:~/environment $ unzip aws-schema-conversion-tool-1.0.latest.zip 
-Archive:  aws-schema-conversion-tool-1.0.latest.zip
+    Archive:  aws-schema-conversion-tool-1.0.latest.zip
     inflating: aws-schema-conversion-tool-1.0.665.deb  
     inflating: agents/aws-cassandra-extractor-1.0.665-1.x86_64.rpm  
     inflating: agents/aws-cassandra-extractor-1.0.665.deb  
