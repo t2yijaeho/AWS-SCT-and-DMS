@@ -5,6 +5,8 @@
 ### 1. Prepare source and target database
 
 Refer to [Launch Custom AMI EC2](https://github.com/t2yijaeho/Custom-AMI-EC2-with-CloudFormation)
+
+
 Refer to [Create RDS PostgreSQL](https://github.com/t2yijaeho/Amazon-RDS-PostgreSQL-with-AWS-CloudFormation)
 
 ### 2. Create Windows firewall inbound rule for Oracle TNS port(1521) using PowerShell script
