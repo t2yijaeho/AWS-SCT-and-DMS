@@ -3,16 +3,17 @@
 ## 1. Prepare Environment
 
 ### 1. Prepare source and target database
-    Refer to [Launch Custom AMI EC2](https://github.com/t2yijaeho/Custom-AMI-EC2-with-CloudFormation)
-    Refer to [Create RDS PostgreSQL](https://github.com/t2yijaeho/Amazon-RDS-PostgreSQL-with-AWS-CloudFormation)
+
+Refer to [Launch Custom AMI EC2](https://github.com/t2yijaeho/Custom-AMI-EC2-with-CloudFormation)
+Refer to [Create RDS PostgreSQL](https://github.com/t2yijaeho/Amazon-RDS-PostgreSQL-with-AWS-CloudFormation)
 
 ### 2. Create Windows firewall inbound rule for Oracle TNS port(1521) using PowerShell script
 
-    ```PowerShell
+    ```powershell
     New-NetFirewallRule -DisplayName “Oracle TNS (TCP-in 1521)” -Profile @(‘Domain’, ‘Private’, 'Public') -Direction Inbound -Protocol TCP –LocalPort 1521 -Action Allow
     ```
 
-    ```PowerShell
+    ```powershell
     PS C:\Users\Administrator> New-NetFirewallRule -DisplayName “Oracle TNS (TCP-in 1521)” -Profile @(‘Domain’, ‘Private’, 'Public') -Direction Inbound -Protocol TCP –LocalPort 1521 -Action Allow
     >>
     Name                  : {8897f95a-d712-4847-a70c-45177fe444a1}
