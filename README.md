@@ -114,7 +114,7 @@
     mspuser:~/environment $ sudo apt -y install xdg-utils
     Reading package lists... Done
       ⋮
-    3 packages can be upgraded. Run 'apt list --upgradable' to see them.
+    0 upgraded, 1 newly installed, 0 to remove and 3 not upgraded.
     mspuser:~/environment $ 
     ```
 
@@ -187,4 +187,33 @@ Archive:  aws-schema-conversion-tool-1.0.latest.zip
     Adding shortcut to the menu
     mspuser:~/environment $ 
     ```
+
+### 5. Download and Install JDBC drivers for AWS SCT
+
+Refer to [Downloading the required database drivers](https://docs.aws.amazon.com/SchemaConversionTool/latest/userguide/CHAP_Installing.html#CHAP_Installing.JDBCDrivers)
+
+1. Downloading the required database drivers
+
+    ```console
+    wget https://download.oracle.com/otn-pub/otn_software/jdbc/217/ojdbc8.jar
+    wget https://jdbc.postgresql.org/download/postgresql-42.2.19.jar
+    wget https://downloads.mariadb.com/Connectors/java/connector-java-2.4.1/mariadb-java-client-2.4.1.jar
+    ```
+
+    ```console
+    mspuser:~/environment $ wget https://download.oracle.com/otn-pub/otn_software/jdbc/217/ojdbc8.jar
+    --2022-09-07 08:38:18--  https://download.oracle.com/otn-pub/otn_software/jdbc/217/ojdbc8.jar
+      ⋮
+    2022-09-07 08:38:19 (85.0 MB/s) - ‘ojdbc8.jar’ saved [5089412/5089412]
+    mspuser:~/environment $ wget https://jdbc.postgresql.org/download/postgresql-42.2.19.jar
+    --2022-09-07 08:40:18--  https://jdbc.postgresql.org/download/postgresql-42.2.19.jar
+      ⋮
+    2022-09-07 08:40:20 (1.09 MB/s) - ‘postgresql-42.2.19.jar’ saved [1005078/1005078]
+    mspuser:~/environment $ wget https://downloads.mariadb.com/Connectors/java/connector-java-2.4.1/mariadb-java-client-2.4.1.jar
+    --2022-09-07 08:40:49--  https://downloads.mariadb.com/Connectors/java/connector-java-2.4.1/mariadb-java-client-2.4.1.jar
+      ⋮
+    2022-09-07 08:40:50 (698 KB/s) - ‘mariadb-java-client-2.4.1.jar’ saved
+    mspuser:~/environment $ 
+    ```
+
 ## 2. AWS
