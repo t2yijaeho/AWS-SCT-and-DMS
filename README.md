@@ -4,11 +4,11 @@
 
 ### 1. Prepare IDE, source and target database
 
-1. Refer to [AWS Cloud9](https://github.com/t2yijaeho/Docker-with-AWS-Cloud9)
+1. For Cloud IDE refer to [AWS Cloud9](https://github.com/t2yijaeho/Docker-with-AWS-Cloud9)
 
-2. Refer to [Launch Amazon EC2 using Custom AMI](https://github.com/t2yijaeho/Custom-AMI-EC2-with-CloudFormation)
+2. For source database Refer to [Launch Amazon EC2 using Custom AMI](https://github.com/t2yijaeho/Custom-AMI-EC2-with-CloudFormation)
 
-3. Refer to [Create Amazon RDS PostgreSQL instance](https://github.com/t2yijaeho/Amazon-RDS-PostgreSQL-with-AWS-CloudFormation)
+3. For target database Refer to [Create Amazon RDS PostgreSQL instance](https://github.com/t2yijaeho/Amazon-RDS-PostgreSQL-with-AWS-CloudFormation)
 
 ### 2. Create Windows firewall inbound rule for Oracle TNS port(1521) using PowerShell script
 
@@ -90,7 +90,7 @@
 
 ### 4. Install xdg-utils for SCT
 
-1. Update apt database with apt
+1. Update apt database
 
     ```console
     sudo apt update
@@ -174,7 +174,7 @@ Refer to [Installing AWS SCT](https://docs.aws.amazon.com/SchemaConversionTool/l
 
 3. Run AWS SCT installer file extracted
 
-    Change ```<build-number>``` according to your current number
+    ***Change ```<build-number>``` according to your current build number***
 
     ```console
     sudo dpkg -i aws-schema-conversion-tool-1.0.<build-number>.deb
@@ -214,6 +214,49 @@ Refer to [Downloading the required database drivers](https://docs.aws.amazon.com
       ⋮
     2022-09-07 08:40:50 (698 KB/s) - ‘mariadb-java-client-2.4.1.jar’ saved
     mspuser:~/environment $ 
+    ```
+
+2. Installing JDBC drivers
+
+    Create a directory to store the JDBC drivers in
+
+    ```console
+    sudo mkdir –p /usr/local/jdbc-drivers
+    ```
+
+    ```console
+    mspuser:~/environment $ sudo mkdir –p /usr/local/jdbc-drivers
+    mspuser:~/environment $
+    ```
+
+    Install the JDBC driver for Oracle database engine
+
+    ```console
+    
+    ```
+
+    ```console
+    
+    ```
+
+    Install the JDBC driver for PostgreSQL database engine
+
+    ```console
+    
+    ```
+
+    ```console
+    
+    ```
+
+    Install the JDBC driver for MariaDB database engine
+
+    ```console
+    
+    ```
+
+    ```console
+    
     ```
 
 ## 2. AWS

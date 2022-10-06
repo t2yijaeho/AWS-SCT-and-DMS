@@ -1,0 +1,73 @@
+CreateProject
+-name: 'OraToPg'
+-directory: '/home/T2-SCT/Scripts'
+/
+
+AddSource
+-name: 'sourcedb'
+-vendor: 'ORACLE'
+-host: 'OracleDB.VM.Private.IP'
+-port: '1521'
+-user: 'hr'
+-password: 'hr'
+/
+
+AddTarget
+-name: 'targetdb'
+-vendor: 'POSTGRESQL'
+-host: 'PostgreSQL.RDS.Endpoint'
+-port: '45432'
+-database: 'addr_target'
+-user: 'addrdba'
+-password: ‘1234’
+/
+
+AddServerMapping
+-sourceTreePath: 'Servers.sourcedb.Schemas.HR'
+-targetTreePath: 'Servers.targetdb'
+/
+
+CreateReport
+-treePath: 'Servers.sourcedb.Schemas.HR'
+/
+
+SaveReportPDF
+-treePath: 'Servers.sourcedb.Schemas.HR'
+-file: '/home/T2-SCT/output/aws-sct-assessment-report.pdf'
+/
+
+SaveReportCSV
+-treePath: 'Servers.sourcedb.Schemas.HR'
+-directory: '/home/T2-SCT/output'
+/
+
+Convert
+-treePath: 'Servers.sourcedb.Schemas.HR'
+/
+
+SaveSourceSQL
+-treePath: 'Servers.SOURCE_ORACLE.Schemas.MYSCHEMA'
+-file: '/home/T2-SCT/output/source/full_source.sql'
+/
+
+SaveSourceSQLbyStage
+-treePath: 'Servers.SOURCE_ORACLE.Schemas.MYSCHEMA'
+-directory: '/home/T2-SCT/output/source/split'
+/
+
+SaveTargetSQL
+-treePath: 'Servers.TARGET_POSTGRES.Schemas.myschema'
+-file: '/home/T2-SCT/output/target/full_target.sql'
+/
+
+SaveTargetSQLbyStage
+-treePath: 'Servers.TARGET_POSTGRES.Schemas.myschema'
+-directory: '/home/T2-SCT/output/target/split'
+/
+
+ApplyToTarget
+-treePath: 'Servers.targetdb.Schemas.addr'
+-overwriteExtensionPack: 'true'
+/
+SaveProject
+/
