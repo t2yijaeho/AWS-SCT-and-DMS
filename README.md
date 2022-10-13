@@ -260,3 +260,37 @@ Refer to [Downloading the required database drivers](https://docs.aws.amazon.com
     ```
 
 ## 2. AWS
+
+1. Get an AWS CloudFormation stack template body
+
+    ```bash
+    wget https://github.com/t2yijaeho/AWS-SCT-and-DMS/raw/matia/Template/DMS-Oracle2Postgre.yaml
+    ```
+
+2. Get your local machine public IP address in the browser
+
+    [Your public IP address](http://checkip.amazonaws.com/)
+
+3. Create an AWS CloudFormation stack
+
+    ***Change `<My Custom Image ID>` to your Custom Amazon Machine Image ID***
+    
+    ***Change `<My IP>` to your local machine IP address (ParameterValue must be in CIDR notation)***
+
+    ```bash
+    aws cloudformation create-stack \
+      --stack-name Ora2PgDMS \
+      --template-body file://./DMS-Oracle2Postgre.yaml \
+      --parameters ParameterKey=CustomImageID,ParameterValue="<My Custom Image ID>" \
+      ParameterKey=LocalLocation,ParameterValue="<My IP>/32"
+    ```
+
+4. AWS CloudFormation returns following output
+
+    ```json
+    {
+    "StackId": "arn:aws:cloudformation:us-abcd-x:123456789012:stack/MigrationVM/b4d0f5e0-d4c2-11ec-9529-06edcc65f112"
+    }
+    ```
+
+5. Monitor the progress by the stack's events in AWS management console

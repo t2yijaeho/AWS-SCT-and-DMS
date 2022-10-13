@@ -6,6 +6,11 @@ Description: >
   "AWS::DMS::ReplicationInstance": MigrationInstance
   "AWS::DMS::Endpoint": SourceEndpoint
   "AWS::DMS::Endpoint": TargetEndpoint
+Parameters:
+  EC2PrivateIP:
+    Description: EC2 instance private IP 
+  RDSInstanceEndpoint:
+    Description: RDS DB instance endpoint
 Resources: 
   MigrationInstance:
     Type: "AWS::DMS::ReplicationInstance"
@@ -39,7 +44,7 @@ Resources:
       EndpointIdentifier: sourcedb
       ResourceIdentifier: sourcedb
       EngineName: oracle
-      ServerName: 
+      ServerName: !Ref EC2PrivateIP
       Port: 1521
       Username: hr
       Password: hr
@@ -65,13 +70,13 @@ Resources:
     #Endpoint configuration
       EndpointIdentifier: targetdb
       ResourceIdentifier: targetdb
-      EngineName: 
-      ServerName: 
-      Port: 
-      Username: 
-      Password: 
+      EngineName: postgres
+      ServerName: !Ref RDSInstanceEndpoint
+      Port: 45432
+      Username: addrdba
+      Password: 1234
       SslMode: none
-      #DatabaseName:
+      DatabaseName: addr_target
     #Endpoint settings
       #ExtraConnectionAttributes: useLogminerReader=N
       #OracleSettings:
@@ -86,16 +91,6 @@ Resources:
       #CertificateArn: String
 
 Outputs:
-  InstanceId:
-    Description: InstanceId of the newly created RDS Instance
-    Value: !Ref MariaDB
-  EndpointAddress:
-    Description: The connection endpoint for the database
-    Value: !GetAtt MariaDB.Endpoint.Address
-  EndpointPort:
-    Description: The port number on which the database accepts connections
-    Value: !GetAtt MariaDB.Endpoint.Port
   InsatancePrivateIP:
-    Description: The private IP address of replication instance
+    Description: The private IP address of the newly created replication instance
     Value: !GetAtt MigrationInstance.ReplicationInstancePrivateIpAddresses
-
