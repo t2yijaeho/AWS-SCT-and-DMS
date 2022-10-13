@@ -262,6 +262,7 @@ Refer to [Downloading the required database drivers](https://docs.aws.amazon.com
 ## 2. Perform Schema Conversion and Database Migration
 
 ### 1. Create schema conversion project
+
 ### 2. Create AWS DMS replication instance, endpoint and task
 
 1. Get an AWS CloudFormation stack template body
