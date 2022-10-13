@@ -259,7 +259,10 @@ Refer to [Downloading the required database drivers](https://docs.aws.amazon.com
     
     ```
 
-## 2. AWS
+## 2. Perform Schema Conversion and Database Migration
+
+### 1. Create schema conversion project
+### 2. Create AWS DMS replication instance, endpoint and task
 
 1. Get an AWS CloudFormation stack template body
 
@@ -267,29 +270,38 @@ Refer to [Downloading the required database drivers](https://docs.aws.amazon.com
     wget https://github.com/t2yijaeho/AWS-SCT-and-DMS/raw/matia/Template/DMS-Oracle2Postgre.yaml
     ```
 
-2. Get your local machine public IP address in the browser
+2. Get your source database server EC2 private IP address and target RDS database endpoint
 
-    [Your public IP address](http://checkip.amazonaws.com/)
+    ```console
+    EC2_PRIVATE_IP=$(aws ec2 describe-addresses \
+      --filters Name=InstanceId,Values=$EC2_INSTANCE_ID \
+      --query "PrivateIpAddress" \
+      --output text)
+    echo $EC2_PRIVATE_IP
+
+    DB_INSTANCE_ENDPOINT=$( \
+      aws rds describe-db-instances \
+        --db-instance-identifier targetdb \
+        --query "DBInstances[0].Endpoint.Address" \
+        --output text)
+    echo $DB_INSTANCE_ENDPOINT
+    ```
 
 3. Create an AWS CloudFormation stack
 
-    ***Change `<My Custom Image ID>` to your Custom Amazon Machine Image ID***
-    
-    ***Change `<My IP>` to your local machine IP address (ParameterValue must be in CIDR notation)***
-
-    ```bash
+    ```console
     aws cloudformation create-stack \
       --stack-name Ora2PgDMS \
       --template-body file://./DMS-Oracle2Postgre.yaml \
-      --parameters ParameterKey=CustomImageID,ParameterValue="<My Custom Image ID>" \
-      ParameterKey=LocalLocation,ParameterValue="<My IP>/32"
+      --parameters ParameterKey=EC2PrivateIP,ParameterValue=$EC2_PRIVATE_IP \
+        ParameterKey=RDSInstanceEndpoint,ParameterValue=$DB_INSTANCE_ENDPOINT
     ```
 
 4. AWS CloudFormation returns following output
 
     ```json
     {
-    "StackId": "arn:aws:cloudformation:us-abcd-x:123456789012:stack/MigrationVM/b4d0f5e0-d4c2-11ec-9529-06edcc65f112"
+    "StackId": "arn:aws:cloudformation:us-abcd-x:123456789012:stack/Ora2PgDMS/b4d0f5e0-d4c2-11ec-9529-06edcc65f112"
     }
     ```
 
